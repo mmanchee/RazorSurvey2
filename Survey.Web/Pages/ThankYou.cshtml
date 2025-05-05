@@ -1,0 +1,19 @@
+﻿@page
+@model Survey.Web.Pages.ThankYouModel
+@{
+    Layout = "_Layout";
+}
+<div class="container">
+    <h2>Thank You</h2>
+    <p>Please review your responses and submit.</p>
+    <div class="mb-3">
+        <!-- (For debugging/confirmation, a JSON summary is shown.) -->
+        <pre>@System.Text.Json.JsonSerializer.Serialize(Model.Survey, new System.Text.Json.JsonSerializerOptions { WriteIndented = true })</pre>
+    </div>
+    <form method="post">
+        <div class="d-flex justify-content-between">
+            <button type="submit" asp-page-handler="Back" class="btn btn-secondary">Back</button>
+            <button type="submit" asp-page-handler="Submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>

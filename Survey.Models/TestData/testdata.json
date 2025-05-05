@@ -1,0 +1,226 @@
+{
+    "Industries": [
+        {
+            "Id": 1,
+            "Name": "Technology"
+        },
+        {
+            "Id": 2,
+            "Name": "Finance"
+        },
+        {
+            "Id": 3,
+            "Name": "Healthcare"
+        },
+        {
+            "Id": 4,
+            "Name": "Education"
+        },
+        {
+            "Id": 5,
+            "Name": "Retail"
+        },
+        {
+            "Id": 6,
+            "Name": "Manufacturing"
+        },
+        {
+            "Id": 7,
+            "Name": "Hospitality"
+        },
+        {
+            "Id": 8,
+            "Name": "Construction"
+        },
+        {
+            "Id": 9,
+            "Name": "Transportation"
+        },
+        {
+            "Id": 10,
+            "Name": "Other"
+        }
+    ],
+    "Positions": [
+        {
+            "Id": 1,
+            "Name": "Entry-Level"
+        },
+        {
+            "Id": 2,
+            "Name": "Associate"
+        },
+        {
+            "Id": 3,
+            "Name": "Specialist"
+        },
+        {
+            "Id": 4,
+            "Name": "Analyst"
+        },
+        {
+            "Id": 5,
+            "Name": "Coordinator"
+        },
+        {
+            "Id": 6,
+            "Name": "Manager"
+        },
+        {
+            "Id": 7,
+            "Name": "Senior Manager"
+        },
+        {
+            "Id": 8,
+            "Name": "Director"
+        },
+        {
+            "Id": 9,
+            "Name": "Senior Director"
+        },
+        {
+            "Id": 10,
+            "Name": "Vice President"
+        },
+        {
+            "Id": 11,
+            "Name": "Senior Vice President"
+        },
+        {
+            "Id": 12,
+            "Name": "Executive"
+        },
+        {
+            "Id": 13,
+            "Name": "Consultant"
+        },
+        {
+            "Id": 14,
+            "Name": "Intern"
+        },
+        {
+            "Id": 15,
+            "Name": "Other"
+        }
+    ],
+    "Colors": [
+        {
+            "Id": 1,
+            "Name": "Red"
+        },
+        {
+            "Id": 2,
+            "Name": "Blue"
+        },
+        {
+            "Id": 3,
+            "Name": "Green"
+        },
+        {
+            "Id": 4,
+            "Name": "Yellow"
+        },
+        {
+            "Id": 5,
+            "Name": "Purple"
+        },
+        {
+            "Id": 6,
+            "Name": "Other"
+        }
+    ],
+    "Music": [
+        {
+            "Id": 1,
+            "Name": "Rock"
+        },
+        {
+            "Id": 2,
+            "Name": "Pop"
+        },
+        {
+            "Id": 3,
+            "Name": "Hip Hop"
+        },
+        {
+            "Id": 4,
+            "Name": "Jazz"
+        },
+        {
+            "Id": 5,
+            "Name": "Classical"
+        },
+        {
+            "Id": 6,
+            "Name": "Electronic"
+        },
+        {
+            "Id": 7,
+            "Name": "Other"
+        }
+    ],
+    "Seasons": [
+        {
+            "Id": 1,
+            "Name": "Spring"
+        },
+        {
+            "Id": 2,
+            "Name": "Summer"
+        },
+        {
+            "Id": 3,
+            "Name": "Autumn (Fall)"
+        },
+        {
+            "Id": 4,
+            "Name": "Winter"
+        },
+        {
+            "Id": 5,
+            "Name": "Other"
+        }
+    ],
+    "LikertQuestions": [
+        {
+            "Id": 1,
+            "Name": "I like my job"
+        },
+        {
+            "Id": 2,
+            "Name": "I like my home"
+        },
+        {
+            "Id": 3,
+            "Name": "I like my family"
+        },
+        {
+            "Id": 4,
+            "Name": "I like animals"
+        },
+        {
+            "Id": 5,
+            "Name": "I like my friends"
+        },
+        {
+            "Id": 6,
+            "Name": "I like my car"
+        },
+        {
+            "Id": 7,
+            "Name": "I like my last vacation"
+        },
+        {
+            "Id": 8,
+            "Name": "I like my work/life balance"
+        },
+        {
+            "Id": 9,
+            "Name": "I like politics"
+        },
+        {
+            "Id": 10,
+            "Name": "I like my economic outlook"
+        }
+    ]
+}

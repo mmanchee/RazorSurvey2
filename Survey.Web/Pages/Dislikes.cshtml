@@ -1,0 +1,101 @@
+﻿@page
+@model Survey.Web.Pages.DislikesModel
+@{
+    Layout = "_Layout";
+}
+<div class="container">
+    <h2>Dislikes</h2>    
+    <form method="post">
+        <!-- Worst Color -->
+        <div class="mb-3">
+            <label class="form-label">What is your worst color?</label>
+            @foreach (var color in Model.Colors)
+            {
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="SurveyForm.WorstColorId" value="@color.Id" 
+                           id="worstColor@color.Id" @(Model.SurveyForm.WorstColorId == color.Id ? "checked" : "") />
+                    <label class="form-check-label" for="worstColor@color.Id">@color.Name</label>
+                </div>
+            }
+        </div>
+        <div class="mb-3" id="otherWorstColorDiv" style="display:@(Model.SurveyForm.WorstColorId == 6 ? "block" : "none")">
+            <label asp-for="SurveyForm.OtherWorstColor" class="form-label">Other Worst Color</label>
+            <input asp-for="SurveyForm.OtherWorstColor" class="form-control" />
+        </div>
+
+        <!-- Worst Music Genre -->
+        <div class="mb-3">
+            <label class="form-label">What are your worst music genres?</label>
+            @foreach (var genre in Model.MusicGenres)
+            {
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="SurveyForm.WorstMusicGenreIds" value="@genre.Id"
+                           @(Model.SurveyForm.WorstMusicGenreIds != null && Model.SurveyForm.WorstMusicGenreIds.Contains(genre.Id) ? "checked" : "") />
+                    <label class="form-check-label">@genre.Name</label>
+                </div>
+            }
+        </div>
+        <div class="mb-3" id="otherWorstMusicDiv" style="display:@(Model.SurveyForm.WorstMusicGenreIds != null && Model.SurveyForm.WorstMusicGenreIds.Contains(7) ? "block" : "none")">
+            <label asp-for="SurveyForm.OtherWorstMusicGenre" class="form-label">Other Worst Music Genre</label>
+            <input asp-for="SurveyForm.OtherWorstMusicGenre" class="form-control" />
+        </div>
+
+        <!-- Worst Season -->
+        <div class="mb-3">
+            <label class="form-label">What is your worst season?</label>
+            <select asp-for="SurveyForm.WorstSeasonId" class="form-select" id="worstSeasonSelect">
+                <option value="">-- Select Season --</option>
+                @foreach (var season in Model.Seasons)
+                {
+                    <option value="@season.Id" selected="@(Model.SurveyForm.WorstSeasonId == season.Id)">@season.Name</option>
+                }
+            </select>
+        </div>
+        <div class="mb-3" id="otherWorstSeasonDiv" style="display:@(Model.SurveyForm.WorstSeasonId == 5 ? "block" : "none")">
+            <label asp-for="SurveyForm.OtherWorstSeason" class="form-label">Other Worst Season</label>
+            <input asp-for="SurveyForm.OtherWorstSeason" class="form-control" />
+        </div>
+
+        <!-- Worst Place -->
+        <div class="mb-3">
+            <label asp-for="SurveyForm.WorstPlace" class="form-label">What is your worst place and why?</label>
+            <textarea asp-for="SurveyForm.WorstPlace" class="form-control" rows="3"></textarea>
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <a class="btn btn-secondary" asp-page="/Ratings">Back</a>
+            <button type="submit" class="btn btn-primary">Next</button>
+        </div>
+    </form>
+    <p>@Model.Progress.CurrentPage of @Model.Progress.TotalPages</p>
+    <div class="progress mb-3">
+        <div class="progress-bar" role="progressbar" style="width: @((Model.Progress.CurrentPage * 100) / Model.Progress.TotalPages)%;">
+            @Model.Progress.CurrentPage of @Model.Progress.TotalPages
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.querySelectorAll('input[name="SurveyForm.WorstColorId"]').forEach(function (elem) {
+            elem.addEventListener("change", function () {
+                var otherDiv = document.getElementById("otherWorstColorDiv");
+                otherDiv.style.display = this.value == "6" ? "block" : "none";
+            });
+        });
+        document.querySelectorAll('input[name="SurveyForm.WorstMusicGenreIds"]').forEach(function (elem) {
+            elem.addEventListener("change", function () {
+                var otherDiv = document.getElementById("otherWorstMusicDiv");
+                var otherChecked = false;
+                document.querySelectorAll('input[name="SurveyForm.WorstMusicGenreIds"]').forEach(function (checkbox) {
+                    if (checkbox.value == "7" && checkbox.checked) { otherChecked = true; }
+                });
+                otherDiv.style.display = otherChecked ? "block" : "none";
+            });
+        });
+        document.getElementById("worstSeasonSelect").addEventListener("change", function () {
+            var otherDiv = document.getElementById("otherWorstSeasonDiv");
+            otherDiv.style.display = this.value == "5" ? "block" : "none";
+        });
+    </script>
+}

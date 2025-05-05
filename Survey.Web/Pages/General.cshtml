@@ -1,0 +1,72 @@
+﻿@page
+@model Survey.Web.Pages.GeneralModel
+@{
+    Layout = "_Layout";
+}
+<div class="container">
+    <h2>General Information</h2>
+    
+    <form method="post">
+        <div class="mb-3">
+            <label asp-for="SurveyForm.Date" class="form-label">Date</label>
+            <input asp-for="SurveyForm.Date" class="form-control" type="date" value="@Model.SurveyForm.Date.ToString("yyyy-MM-dd")" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="SurveyForm.Name" class="form-label">Name</label>
+            <input asp-for="SurveyForm.Name" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="SurveyForm.Age" class="form-label">Age</label>
+            <input asp-for="SurveyForm.Age" class="form-control" type="number" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Industry</label>
+            <select asp-for="SurveyForm.IndustryId" class="form-select" id="IndustrySelect">
+                <option value="">-- Select Industry --</option>
+                @foreach (var industry in Model.Industries)
+                {
+                    <option value="@industry.Id" selected="@(Model.SurveyForm.IndustryId == industry.Id)">@industry.Name</option>
+                }
+            </select>
+        </div>
+        <div class="mb-3" id="otherIndustryDiv" style="display:@(Model.SurveyForm.IndustryId == 10 ? "block" : "none")">
+            <label asp-for="SurveyForm.OtherIndustry" class="form-label">Other Industry</label>
+            <input asp-for="SurveyForm.OtherIndustry" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Position <span class="text-danger">*</span></label>
+            <select asp-for="SurveyForm.PositionId" class="form-select" id="PositionSelect" required>
+                <option value="">-- Select Position --</option>
+                @foreach (var pos in Model.Positions)
+                {
+                    <option value="@pos.Id" selected="@(Model.SurveyForm.PositionId == pos.Id)">@pos.Name</option>
+                }
+            </select>
+        </div>
+        <div class="mb-3" id="otherPositionDiv" style="display:@((Model.SurveyForm.PositionId == 15) ? "block" : "none")">
+            <label asp-for="SurveyForm.OtherPosition" class="form-label">Other Position</label>
+            <input asp-for="SurveyForm.OtherPosition" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Next</button>
+    </form>
+    <p>@Model.Progress.CurrentPage of @Model.Progress.TotalPages</p>
+    <div class="progress mb-3">
+        <div class="progress-bar" role="progressbar" style="width: @((Model.Progress.CurrentPage * 100) / Model.Progress.TotalPages)%;">
+            @Model.Progress.CurrentPage of @Model.Progress.TotalPages
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.getElementById("IndustrySelect").addEventListener("change", function () {
+            var otherDiv = document.getElementById("otherIndustryDiv");
+            otherDiv.style.display = this.value == "10" ? "block" : "none";
+        });
+
+        document.getElementById("PositionSelect").addEventListener("change", function () {
+            var otherDiv = document.getElementById("otherPositionDiv");
+            otherDiv.style.display = this.value == "15" ? "block" : "none";
+        });
+    </script>
+}

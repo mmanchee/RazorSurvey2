@@ -1,0 +1,44 @@
+﻿@page
+@model Survey.Web.Pages.LengthModel
+@{
+    Layout = "_Layout";
+}
+<div class="container">
+    <h2>Survey Length</h2>
+    
+    <form method="post">
+        <div class="mb-3">
+            <label class="form-label">Choose the survey length <span class="text-danger">*</span></label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="SurveyForm.SurveyLength" value="EndHere" id="endHere" required
+                @(Model.SurveyForm.SurveyLength == "EndHere" ? "checked" : "") />
+                <label class="form-check-label" for="endHere">End Here</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="SurveyForm.SurveyLength" value="OneMorePage" id="oneMore"
+                @(Model.SurveyForm.SurveyLength == "OneMorePage" ? "checked" : "") />
+                <label class="form-check-label" for="oneMore">1 More Page</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="SurveyForm.SurveyLength" value="TwoMorePages" id="twoMore"
+                @(Model.SurveyForm.SurveyLength == "TwoMorePages" ? "checked" : "") />
+                <label class="form-check-label" for="twoMore">2 More Pages</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="SurveyForm.SurveyLength" value="FullSurvey" id="fullSurvey"
+                @(Model.SurveyForm.SurveyLength == "FullSurvey" ? "checked" : "") />
+                <label class="form-check-label" for="fullSurvey">Full Survey</label>
+            </div>
+        </div>
+        <div class="d-flex justify-content-between">
+            <a class="btn btn-secondary" asp-page="/General">Back</a>
+            <button type="submit" class="btn btn-primary">Next</button>
+        </div>
+    </form>
+    <p>@Model.Progress.CurrentPage of @Model.Progress.TotalPages</p>
+    <div class="progress mb-3">
+        <div class="progress-bar" role="progressbar" style="width: @((Model.Progress.CurrentPage * 100) / Model.Progress.TotalPages)%;">
+            @Model.Progress.CurrentPage of @Model.Progress.TotalPages
+        </div>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+﻿@page
+@model Survey.Web.Pages.RatingsModel
+@{
+    Layout = "_Layout";
+}
+<div class="container">
+    <h2>Ratings</h2>
+    <p>@Model.Progress.CurrentPage of @Model.Progress.TotalPages</p>
+    <div class="progress mb-3">
+        <div class="progress-bar" role="progressbar" style="width: @((Model.Progress.CurrentPage * 100) / Model.Progress.TotalPages)%;">
+            @Model.Progress.CurrentPage of @Model.Progress.TotalPages
+        </div>
+    </div>
+    <form method="post">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Question</th>
+                    <th>1<br /><small>Strongly Disagree</small></th>
+                    <th>2<br /><small>Disagree</small></th>
+                    <th>3<br /><small>Neutral/Ambivalent</small></th>
+                    <th>4<br /><small>Agree</small></th>
+                    <th>5<br /><small>Strongly Agree</small></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var question in Model.LikertQuestions)
+                {
+                    <tr>
+                        <td>@question.Name</td>
+                        @for (int i = 1; i <= 5; i++)
+                        {
+                            <td>
+                                <input type="radio" name="RatingsAnswers[@question.Id]" value="@i"
+                                @(Model.RatingsAnswers != null && Model.RatingsAnswers.ContainsKey(question.Id) && Model.RatingsAnswers[question.Id] == i ? "checked" : "") required />
+                            </td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="d-flex justify-content-between">
+            <a class="btn btn-secondary" asp-page="/Likes">Back</a>
+            <button type="submit" class="btn btn-primary">Next</button>
+        </div>
+    </form>
+    <p>@Model.Progress.CurrentPage of @Model.Progress.TotalPages</p>
+    <div class="progress mb-3">
+        <div class="progress-bar" role="progressbar" style="width: @((Model.Progress.CurrentPage * 100) / Model.Progress.TotalPages)%;">
+            @Model.Progress.CurrentPage of @Model.Progress.TotalPages
+        </div>
+    </div>
+</div>
